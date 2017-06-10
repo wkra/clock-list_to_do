@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function (){
        if (toDoInput.value){
        var newLi = document.createElement("li");
        toDoUl.appendChild(newLi);
-       newLi.innerHTML = "<label></label> " + "<input type='button'class='deleteBtn' value='usuń'/>";
+       newLi.innerHTML = "<label></label> " + "<button class='deleteBtn'>usuń</button>";
 	   var newAllLabel = document.querySelectorAll("label")
 	   newAllLabel[newAllLabel.length-1].innerText = toDoInput.value;
 	   
