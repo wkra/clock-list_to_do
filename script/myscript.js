@@ -54,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function (){
        toDoUl.appendChild(newLi);
        newLi.innerHTML = "<label></label> " + "<input type='button'class='deleteBtn' value='usuń'/>";
 	   var newAllLabel = document.querySelectorAll("label")
-	   console.log(newAllLabel.length);
 	   newAllLabel[newAllLabel.length-1].innerText = toDoInput.value;
 	   
 	   var newInput = document.createElement("input");
@@ -90,6 +89,8 @@ document.addEventListener("DOMContentLoaded", function (){
            }
              });
        }
+	   
+		// hide remAllBtn
        var remAllBtn = document.querySelector("#remAllBtn");
        function remAllBtnFunc(){
            if (checkboxFlag>0){
@@ -99,11 +100,12 @@ document.addEventListener("DOMContentLoaded", function (){
            }
        }
        
-       
+		// remAllBtn event
        remAllBtn.addEventListener("click", function(){
            var classDone = document.querySelectorAll(".checkboxDone");
            for(i=0;i<classDone.length;i++){
-               classDone[i].remove("li");
+               classDone[i].parentNode.remove("li");
+			   
                remAllBtn.classList.add("hide0");
            }
         
