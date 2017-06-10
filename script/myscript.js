@@ -65,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function (){
 
        }
        
+		// deneteBtn event
        var deleteBtn=document.querySelectorAll(".deleteBtn");
        for(i=0;i<deleteBtn.length;i++){
            deleteBtn[i].addEventListener("click", function (){
@@ -116,6 +117,12 @@ document.addEventListener("DOMContentLoaded", function (){
    }
    
    toDoBtn.addEventListener("click", toDoFunc);
+   
+   document.onkeydown = function(){
+    if(window.event.keyCode=='13'){
+        toDoFunc();
+    }
+}
    
     
 });
