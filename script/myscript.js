@@ -81,11 +81,9 @@ document.addEventListener("DOMContentLoaded", function (){
             checkbox[i].addEventListener("change", function (){
            if(this.checked){
                this.parentNode.classList.add("checkboxDone");
-               checkboxFlag = document.querySelectorAll(".checkboxDone").length;
                remAllBtnFunc();
            } else {
                this.parentNode.classList.remove("checkboxDone");
-               checkboxFlag = document.querySelectorAll(".checkboxDone").length;
                remAllBtnFunc();
                
            }
@@ -95,12 +93,13 @@ document.addEventListener("DOMContentLoaded", function (){
 		// hide remAllBtn
        var remAllBtn = document.querySelector("#remAllBtn");
        function remAllBtnFunc(){
+		   checkboxFlag = document.querySelectorAll(".checkboxDone").length;
            if (checkboxFlag>0){
                remAllBtn.classList.remove("hide0");
            } else {
                remAllBtn.classList.add("hide0");
            }
-		   checkboxFlag = document.querySelectorAll(".checkboxDone").length;
+		   
 		   console.log(checkboxFlag);
        }
        
