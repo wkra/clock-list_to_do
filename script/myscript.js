@@ -52,8 +52,18 @@ document.addEventListener("DOMContentLoaded", function (){
        if (toDoInput.value){
        var newLi = document.createElement("li");
        toDoUl.appendChild(newLi);
-       newLi.innerHTML = "<label>" + toDoInput.value + "<input type='checkbox' class='checkbox'/></label> " + "<input type='button'class='deleteBtn' value='usuń'/>";
+       newLi.innerHTML = "<label></label> " + "<input type='button'class='deleteBtn' value='usuń'/>";
+	   var newAllLabel = document.querySelectorAll("label")
+	   console.log(newAllLabel.length);
+	   newAllLabel[newAllLabel.length-1].innerText = toDoInput.value;
+	   
+	   var newInput = document.createElement("input");
+	   newInput.type = "checkbox";
+	   newInput.className = "checkbox";
+	   newAllLabel[newAllLabel.length-1].appendChild(newInput);
+	   
        toDoInput.value = "";
+
        }
        
        var deleteBtn=document.querySelectorAll(".deleteBtn");
@@ -69,11 +79,11 @@ document.addEventListener("DOMContentLoaded", function (){
        for (i=0; i<checkbox.length;i++){
             checkbox[i].addEventListener("change", function (){
            if(this.checked){
-               this.parentNode.parentNode.classList.add("checkboxDone");
+               this.parentNode.classList.add("checkboxDone");
                checkboxFlag++;
                remAllBtnFunc();
            } else {
-               this.parentNode.parentNode.classList.remove("checkboxDone");
+               this.parentNode.classList.remove("checkboxDone");
                checkboxFlag--;
                remAllBtnFunc();
                
