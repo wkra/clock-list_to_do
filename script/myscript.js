@@ -74,17 +74,18 @@ document.addEventListener("DOMContentLoaded", function (){
        }
        
        var checkbox=document.querySelectorAll(".checkbox");
-       var checkboxFlag = 0;
+       var checkboxFlag = document.querySelectorAll(".checkboxDone").length;
+
        
        for (i=0; i<checkbox.length;i++){
             checkbox[i].addEventListener("change", function (){
            if(this.checked){
                this.parentNode.classList.add("checkboxDone");
-               checkboxFlag++;
+               checkboxFlag = document.querySelectorAll(".checkboxDone").length;
                remAllBtnFunc();
            } else {
                this.parentNode.classList.remove("checkboxDone");
-               checkboxFlag--;
+               checkboxFlag = document.querySelectorAll(".checkboxDone").length;
                remAllBtnFunc();
                
            }
@@ -99,6 +100,8 @@ document.addEventListener("DOMContentLoaded", function (){
            } else {
                remAllBtn.classList.add("hide0");
            }
+		   checkboxFlag = document.querySelectorAll(".checkboxDone").length;
+		   console.log(checkboxFlag);
        }
        
 		// remAllBtn event
@@ -106,8 +109,8 @@ document.addEventListener("DOMContentLoaded", function (){
            var classDone = document.querySelectorAll(".checkboxDone");
            for(i=0;i<classDone.length;i++){
                classDone[i].parentNode.remove("li");
-			   
                remAllBtn.classList.add("hide0");
+
            }
         
            
