@@ -70,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function (){
        for(i=0;i<deleteBtn.length;i++){
            deleteBtn[i].addEventListener("click", function (){
                this.parentNode.remove();
+			   remAllBtnFunc();
            });
        }
        
@@ -99,8 +100,7 @@ document.addEventListener("DOMContentLoaded", function (){
            } else {
                remAllBtn.classList.add("hide0");
            }
-		   
-		   console.log(checkboxFlag);
+
        }
        
 		// remAllBtn event
