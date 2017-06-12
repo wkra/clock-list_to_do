@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function (){
    function printClockDiv(a){
        clockDiv.innerHTML = a;
    }
-   
+  var clockOneFlag = ""; 
    function clock(){
        var t = new Date();
        var y = t.getFullYear();
@@ -19,6 +19,32 @@ document.addEventListener("DOMContentLoaded", function (){
        var m = t.getMinutes();
        var s = t.getSeconds();
        
+	   //analog clock begin
+
+	  //clock One
+	  (function(h, m, s, clockOneFlag){
+		  if(clockOneFlag != 1){
+		var oneSecondsHand = document.querySelector('.clockOne .seconds');
+		var oneMinutesHand = document.querySelector('.clockOne .minutes');
+		var oneHoursHand = document.querySelector('.clockOne .hours');
+		
+		oneSecondsHand.style.animationDelay = '-' + s + 's'
+		oneMinutesHand.style.animationDelay = '-' + m*60 + 's'
+		oneHoursHand.style.animationDelay = '-' + (h-7)*3600 + 's'
+		  }
+	  })(h, m ,s, clockOneFlag)
+		clockOneFlag = 1;
+		
+	   //clock Two
+	   	var twoSecondsHand = document.querySelector('.clockTwo .seconds');
+		var twoMinutesHand = document.querySelector('.clockTwo .minutes');
+		var twoHoursHand = document.querySelector('.clockTwo .hours');
+		
+		twoSecondsHand.style.transform = "rotate(" + s*6 + "deg)";
+		twoMinutesHand.style.transform = "rotate(" + m*6 + "deg)";
+		twoHoursHand.style.transform = "rotate(" + h*30 + "deg)";
+	   
+	   //analog clock end
        
        return twoNum(h) + ":" + twoNum(m) + ":"+ twoNum(s) + ", " + days[d] + " " + dNum + " " + months[month] + " " +y;
    }
@@ -29,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function (){
    }
    
    function refresh(){
-       printClockDiv(clock());
+       printClockDiv(clock(clockOneFlag));
        setTimeout(refresh, 1000);
    }
    
